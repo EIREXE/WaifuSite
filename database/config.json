@@ -1,1 +1,0 @@
-{"version": "0.2.12", "index_class": "transactional", "index_store_class": "basic", "indexes": {"waifu": {"pk": {"id": "a22ec8af294c44d48ae7f8b1c33a1998", "key": "pk"}}}, "store_class": "transactional", "serializer_class": "json", "autocommit": false}
