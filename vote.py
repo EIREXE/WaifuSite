@@ -85,3 +85,7 @@ def thankyou_add():
 @votes.route("/thankyou")
 def thankyou():
     return render_template("thankyou.html")
+
+@votes.route("/already_voted")
+def already_voted():
+    return render_template("already_voted.html")
