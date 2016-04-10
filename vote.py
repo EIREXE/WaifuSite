@@ -77,3 +77,11 @@ def view_waifu(pk):
         return abort(404)
         pass
     return render_template("waifu.html", waifu=waifu)
+
+@votes.route("/thankyou_add")
+def thankyou_add():
+    return render_template("thankyou_add.html")
+
+@votes.route("/thankyou")
+def thankyou():
+    return render_template("thankyou.html")
