@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.register_blueprint(votes)
 app.dbbackend = FileBackend("./database")
 app.config['UPLOAD_FOLDER'] = _cfg("content-folder")
-app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg', 'gif'])
+app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg', 'gif', 'JPEG', 'JPG', 'PNG', 'GIF'])
 
 app.config['WAIFU_BGS'] = list(["0.png","1.png"])
 

@@ -24,7 +24,7 @@ def vote(pk):
         response = current_app.make_response(redirect_to_index)
         response.set_cookie(pk + '_vote', value='true')
         waifu = current_app.dbbackend.filter(Waifu, {'pk':pk})
-        ip = request.headers['X-Forwarded-For']
+        ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
         try:
             if ip in waifu[0].votes_l:
                 return redirect("/already_voted")
@@ -76,6 +76,9 @@ def add_waifu():
             waifu.file_path = os.path.join("/static/content/", waifu.pk, filename)
             current_app.dbbackend.save(waifu)
             current_app.dbbackend.commit()
+            return redirect("/thankyou_add")
+        else:
+            print(allowed_file(w_file.filename))
             return redirect("/thankyou_add")
     pass
 @votes.route("/waifu/<pk>")
