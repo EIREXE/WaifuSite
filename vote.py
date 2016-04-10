@@ -24,13 +24,14 @@ def vote(pk):
         response = current_app.make_response(redirect_to_index)
         response.set_cookie(pk + '_vote', value='true')
         waifu = current_app.dbbackend.filter(Waifu, {'pk':pk})
+        ip = request.headers.getlist("X-Forwarded-For")[0]
         try:
-            if request.remote_addr in waifu[0].votes_l:
+            if ip in waifu[0].votes_l:
                 return redirect("/already_voted")
-            waifu[0].votes_l.append(request.remote_addr)
+            waifu[0].votes_l.append(ip)
         except:
             waifu[0].votes_l = list()
-            waifu[0].votes_l.append(request.remote_addr)
+            waifu[0].votes_l.append(ip)
         waifu[0].votes = waifu[0].votes + 1
 
         current_app.dbbackend.save(waifu[0])
