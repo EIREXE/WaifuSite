@@ -24,7 +24,7 @@ def vote(pk):
         response = current_app.make_response(redirect_to_index)
         response.set_cookie(pk + '_vote', value='true')
         waifu = current_app.dbbackend.filter(Waifu, {'pk':pk})
-        ip = request.headers.getlist("X-Forwarded-For")[0]
+        ip = request.headers['X-Forwarded-For']
         try:
             if ip in waifu[0].votes_l:
                 return redirect("/already_voted")
