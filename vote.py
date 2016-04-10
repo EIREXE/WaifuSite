@@ -24,7 +24,15 @@ def vote(pk):
         response = current_app.make_response(redirect_to_index)
         response.set_cookie(pk + '_vote', value='true')
         waifu = current_app.dbbackend.filter(Waifu, {'pk':pk})
+        try:
+            waifu[0].votes_l.append(request.remote_addr)
+            if request.remote_addr in waifu[0].votes_l:
+                return redirect("/already_voted")
+        except:
+            waifu[0].votes_l = list()
+            waifu[0].votes_l.append(request.remote_addr)
         waifu[0].votes +=1
+
         current_app.dbbackend.save(waifu[0])
         current_app.dbbackend.commit()
         current_app.dbbackend = FileBackend("./database")
