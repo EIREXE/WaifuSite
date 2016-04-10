@@ -31,7 +31,7 @@ def vote(pk):
         except:
             waifu[0].votes_l = list()
             waifu[0].votes_l.append(request.remote_addr)
-        waifu[0].votes +=1
+        waifu[0].votes = waifu[0].votes + 1
 
         current_app.dbbackend.save(waifu[0])
         current_app.dbbackend.commit()
