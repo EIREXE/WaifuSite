@@ -25,9 +25,9 @@ def vote(pk):
         response.set_cookie(pk + '_vote', value='true')
         waifu = current_app.dbbackend.filter(Waifu, {'pk':pk})
         try:
-            waifu[0].votes_l.append(request.remote_addr)
             if request.remote_addr in waifu[0].votes_l:
                 return redirect("/already_voted")
+            waifu[0].votes_l.append(request.remote_addr)
         except:
             waifu[0].votes_l = list()
             waifu[0].votes_l.append(request.remote_addr)
