@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/static/css/waifubox.css">
+<div class="row bump">
+    <div class="small-12 large-12 columns">
+        <div class="row">
+            <div class="profile-card">
+                <div class="small-12 large-2 columns">
+                    <a href="{{waifu.file_path}}">
+                        <img src="{{waifu.file_path}}" alt="profile image">
+                        </a>
+                    </div>
+                    <div class="small-12 large-8 columns">
+                        <a href="/waifu/{{waifu.pk}}"><h4>{{waifu.name}}</a>
+                        <span>{{waifu.type}} from Facepunch</span>
+                        </h4>
+                        <p>
+                            <i class="fi-mail"></i>
+                            <span></span>
+                        </p>
+                        <p>
+                            <i class="fi-social-twitter"></i>
+                        </p>
+                        <p>
+                            <i class="fi-web"></i>
+                        </p>
+                    </div>
+                    <div class="row collapse">
+                        <ul class="button-group even-3">
+                            <li>
+                                <a href="#" class="button"> Position
+                                    <span>#{{waifu.get_waifu_position()}} </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="button"> Votes
+                                    <span>{{waifu.votes}} </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/vote/{{ waifu.pk }}" class="button"> Vote
+                                    <span>For your waifu </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

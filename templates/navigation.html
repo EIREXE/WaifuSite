@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/css/foundation.css">
+<link rel="stylesheet" href="/static/css/navigation.css">
+{% block styles %}
+{% endblock %}
+{% block title %}
+<title>WaifuBook </title>
+{% endblock %}
+<style>
+.bg {
+  background-image: url("/static/img/{{get_random_waifu_bg()}}")
+}
+</style>
+</head>
+<div class="bg">
+</div>
+<body>
+  <nav class="menu">
+          <h1 class="name">
+              WaifuMaster
+          </a>
+      </h1>
+      <ul class="inline-list">
+          <li>
+              <a href="/">Home</a>
+          </li>
+          <li>
+              <a href="#">Add your waifu</a>
+          </li>
+      </ul>
+      <ul class="inline-list hide-for-small-only account-action">
+      </ul>
+      <a class="account hide-for-medium-up" href="#" data-reveal-id="myModal">
+          <i class="fi-unlock"></i>
+      </a>
+  </nav>
+
+
+{% block body %}
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/vendor/jquery.js"></script>
+<script src="/static/js/foundation.min.js"></script>
+<script>
+  $(document).foundation();
+</script>
+{% endblock %}
+</body>
+
+</html>
