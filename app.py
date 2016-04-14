@@ -97,6 +97,10 @@ def test():
 def logout():
     logout_user()
     return redirect("/")
+
+@app.route("/rules")
+def rules():
+    return render_template("rules.html")
 @google.tokengetter
 def get_access_token():
     return session.get('access_token')
