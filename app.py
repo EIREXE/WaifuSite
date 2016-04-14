@@ -1,5 +1,5 @@
 from flask import Flask, redirect, session, json, url_for
-from flask_oauth import OAuth
+from flask_oauth_c import OAuth
 from blitzdb import FileBackend
 from objects import Waifu, User
 from vote import votes

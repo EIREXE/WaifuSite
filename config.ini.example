@@ -1,4 +1,8 @@
 [config]
 host=127.0.0.1
 port=9999
-content-folder=/
+content-folder=/home/eirexe/waifubook/static/content
+google-api-key=
+google-api-secret=
+secret-key=asd
+actual-url=http://waifu.modulous.net
