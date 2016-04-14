@@ -52,7 +52,7 @@ def load_user(user_id):
 
 @app.route('/login')
 def login():
-    callback=url_for('authorized', _external=True)
+    callback=_cfg("actual-url") + "/oauth2callback"
     print(callback)
     return google.authorize(callback=callback)
 
