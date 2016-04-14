@@ -1,4 +1,4 @@
-from flask import Flask, redirect, session, json, url_for
+from flask import Flask, redirect, session, json, url_for, render_template
 from flask_oauth_c import OAuth
 from blitzdb import FileBackend
 from objects import Waifu, User
