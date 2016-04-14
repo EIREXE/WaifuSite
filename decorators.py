@@ -1,4 +1,4 @@
-from flask.ext.login import current_user
+from flask.ext.login import current_user, current_app
 from flask import redirect
 from functools import wraps
 def user_required(f):
