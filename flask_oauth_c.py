@@ -9,6 +9,7 @@
     :license: BSD, see LICENSE for more details.
 """
 import httplib2
+from config import _cfg, _cfgi
 from functools import wraps
 from urllib.parse import urljoin
 from flask import request, session, json, redirect, Response
