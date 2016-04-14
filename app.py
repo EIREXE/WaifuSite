@@ -15,6 +15,8 @@ app.register_blueprint(votes)
 app.dbbackend = FileBackend("./database")
 app.config['UPLOAD_FOLDER'] = _cfg("content-folder")
 app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg', 'gif', 'JPEG', 'JPG', 'PNG', 'GIF'])
+app.config['SERVER_NAME'] = "waifuname.modulous.net"
+
 
 login_manager = LoginManager()
 login_manager.init_app(app)
