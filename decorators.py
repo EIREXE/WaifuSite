@@ -12,8 +12,10 @@ def user_required(f):
 def not_banned(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
-        if(current_user.banned == None):
-            current_user.banned = False
+        if not hasattr(current_user,'banned':
+            user = current_user._get_current_object()
+            user.banned = False
+            current_app.dbbackend.save(user)
         if current_user.is_banned:
             return redirect("/")
         else:

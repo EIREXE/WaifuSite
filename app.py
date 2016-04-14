@@ -78,7 +78,8 @@ def authorized(resp):
             "google_picture": rjson['picture'],
             "google_id": rjson['id'],
             "google_token": resp['access_token'],
-            "voted_waifus": []
+            "voted_waifus": [],
+            "banned": False
         })
     user.google_token = resp['access_token']
     app.dbbackend.save(user)
