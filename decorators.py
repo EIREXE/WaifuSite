@@ -12,6 +12,8 @@ def user_required(f):
 def not_banned(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
+        if(current_user.banned == None):
+            current_user.banned = False
         if current_user.is_banned:
             return redirect("/")
         else:
