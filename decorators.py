@@ -9,3 +9,11 @@ def user_required(f):
         else:
             return f(*args, **kwargs)
     return wrapper
+def not_banned(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        if current_user.is_banned:
+            return redirect("/")
+        else:
+            return f(*args, **kwargs)
+    return wrapper

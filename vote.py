@@ -3,7 +3,7 @@ from flask.ext.login import current_user
 from objects import Waifu, User
 from werkzeug import secure_filename
 from blitzdb import queryset, FileBackend
-from decorators import user_required
+from decorators import user_required, not_banned
 import blitzdb
 from PIL import Image
 from resizeimage import resizeimage
@@ -55,8 +55,10 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']
 
+
 @votes.route("/add_waifu", methods=['GET','POST'])
 @user_required
+@not_banned
 def add_waifu():
     if request.method == 'GET':
         return render_template("add_waifu.html")
@@ -123,3 +125,11 @@ def delete_waifu(pk):
         current_app.dbbackend.delete(waifu)
         current_app.dbbackend.commit()
     return redirect("/")
+@votes.route("/ban/<pk>")
+def ban_waifu_creator(pk):
+    if(current_user.is_admin):
+        waifu = current_app.dbbackend.get(Waifu, {"pk":pk})
+        user = waifu.creator
+        user.banned = True
+        current_app.dbbackend.save(user)
+        current_app.dbbackend.commit()

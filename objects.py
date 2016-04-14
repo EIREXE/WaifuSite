@@ -29,6 +29,12 @@ class User(Document):
             return True
         else:
             return False
+    @property
+    def is_banned(self):
+        if(self.banned):
+            return True
+        else:
+            return False
     def get_id(self):
         return self.pk
     pass
