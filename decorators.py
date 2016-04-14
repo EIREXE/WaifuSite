@@ -4,7 +4,7 @@ from functools import wraps
 def user_required(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
-        if current_user.is_anonymous():
+        if current_user.is_anonymous:
             return redirect("/login")
         else:
             return f(*args, **kwargs)
