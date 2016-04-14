@@ -12,7 +12,7 @@ def user_required(f):
 def not_banned(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
-        if not hasattr(current_user,'banned':
+        if not hasattr(current_user,'banned'):
             user = current_user._get_current_object()
             user.banned = False
             current_app.dbbackend.save(user)
