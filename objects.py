@@ -23,6 +23,12 @@ class User(Document):
     @property
     def is_anonymous(self):
         return False
+    @property
+    def is_admin(self):
+        if self.google_id == "113163643206165149631":
+            return True
+        else:
+            return False
     def get_id(self):
         return self.pk
     pass

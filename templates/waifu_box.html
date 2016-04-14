@@ -9,7 +9,7 @@
                         </a>
                     </div>
                     <div class="small-12 large-8 columns">
-                        <a href="/waifu/{{waifu.pk}}"><h4>{{waifu.name}}</a>
+                        <a href="/waifu/{{waifu.pk}}"><h4>{{waifu.name}}</a> {% if current_user.is_admin %}<a href="/remove_waifu/{{waifu.pk}}">X</a>{% endif %}
                         <span>{{waifu.type}} from {{ waifu.origin }}</span>
                         </h4>
                         <p>
