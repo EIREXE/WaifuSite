@@ -27,16 +27,16 @@ def vote(pk):
         redirect_to_index = redirect("/thankyou")
         response = current_app.make_response(redirect_to_index)
         response.set_cookie(pk + '_vote', value='true')
-        waifu = current_app.dbbackend.get(Waifu, {'pk':pk})
+        waifu = current_app.dbbackend.get(Waifu, {"pk":pk})
         ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
 
         try:
-            if ip in waifu[0].votes_l:
+            if ip in waifu.votes_l:
                 return redirect("/already_voted")
-            waifu[0].votes_l.append(ip)
+            waifu.votes_l.append(ip)
         except:
-            waifu[0].votes_l = list()
-            waifu[0].votes_l.append(ip)
+            waifu.votes_l = list()
+            waifu.votes_l.append(ip)
         user_m = current_user._get_current_object()
         if waifu in user_m.voted_waifus:
                 return redirect("/already_voted")
