@@ -14,16 +14,12 @@ class Waifu(Document):
     pass
 
 class User(Document):
-
-    @staticmethod
-    def get_or_create(steam_id):
-        backend = current_app.dbbackend
-        rv = backend.get(User,{"steam_id":steam_id})
-        if rv is None:
-            rv = User({
-                "steam_id": steam_id,
-                "nickname": ""
-            })
-            dbbackend.save(rv)
-            dbbackend.commit()
-        return rv
+    def is_authenticated(self):
+        return True
+    def is_active(self):
+        return True
+    def is_anonymous(self):
+        return False
+    def get_id(self):
+        return self.pk
+    pass
