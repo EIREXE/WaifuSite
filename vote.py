@@ -51,42 +51,6 @@ def vote(pk):
         current_app.dbbackend = FileBackend("./database")
     return response
 
-@votes.route("/downvote/<pk>")
-@user_required
-def downvote(pk):
-    print(pk)
-    if not current_user:
-        return redirect("/login")
-    if request.method == 'GET':
-        if pk + '_vote' in request.cookies:
-            return redirect('/already_voted')
-        redirect_to_index = redirect("/thankyou")
-        response = current_app.make_response(redirect_to_index)
-        response.set_cookie(pk + '_vote', value='true')
-        waifu = current_app.dbbackend.get(Waifu, {"pk":pk})
-        ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-
-        try:
-            if ip in waifu.votes_l:
-                return redirect("/already_voted")
-            waifu.votes_l.append(ip)
-        except:
-            waifu.votes_l = list()
-            waifu.votes_l.append(ip)
-        user_m = current_user._get_current_object()
-        if waifu in user_m.voted_waifus:
-                return redirect("/already_voted")
-        user_m.voted_waifus.append(waifu)
-
-        current_app.dbbackend.save(user_m)
-
-        waifu.votes = waifu.votes - 1
-
-        current_app.dbbackend.save(waifu)
-        current_app.dbbackend.commit()
-        current_app.dbbackend = FileBackend("./database")
-    return response
-
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']
