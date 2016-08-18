@@ -24,7 +24,7 @@
                         </p>
                     </div>
                     <div class="row collapse">
-                        <ul class="button-group even-3">
+                        <ul class="button-group even-4">
                             <li>
                                 <a href="#" class="button"> Position
                                     <span>#{{waifu.get_waifu_position()}} </span>
@@ -36,9 +36,10 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/vote/{{ waifu.pk }}" class="button"> Vote
-                                    <span>For your waifu </span>
-                                </a>
+                                <a href="/vote/{{ waifu.pk }}" class="button"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star</a>
+                            </li>
+                            <li>
+                                <a href="/vote/{{ waifu.pk }}" class="button"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star</a>
                             </li>
                         </ul>
                     </div>
